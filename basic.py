@@ -2,12 +2,12 @@
 import cv2;
 
 
-image = cv2.imread("banner.jpg")
-gray_image = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
-cv2.imshow("Over the Clouds", image)
-cv2.imshow("Over the Clouds - gray", gray_image)
-cv2.waitKey(3000)
-cv2.destroyAllWindows()
-print(image)
+videoCaptureObject = cv2.VideoCapture(0)
+while(True):
+    ret,frame = videoCaptureObject.read()
+    cv2.imshow('Capturing Video',frame)
+    if(cv2.waitKey(1) & 0xFF == ord('q')):
+        videoCaptureObject.release()
+        cv2.destroyAllWindows()
 
 
